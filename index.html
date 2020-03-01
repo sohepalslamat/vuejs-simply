@@ -1,5 +1,6 @@
 <div id="app">
-    <h1>{{name}}</h1>
+    <h1 :title="title">{{name}}</h1>
+    <img :src="img" alt="">
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -7,7 +8,10 @@
     var app = new Vue({
         el: "#app",
         data: {
-            name: "sohep"
+            name: "sohep",
+            img: "add.png",
+            title: "اسم الأول"
+
         }
     })
 </script>
