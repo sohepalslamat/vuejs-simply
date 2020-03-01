@@ -1,5 +1,5 @@
 <div id="app">
-    <h1>{{name}}</h1>
+    <h1 v-text="name"></h1>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -7,7 +7,8 @@
     var app = new Vue({
         el: "#app",
         data: {
-            name: "sohep"
+            name: "sohep",
+            name2: "alslamat"
         }
     })
 </script>
