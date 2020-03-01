@@ -1,6 +1,7 @@
 <div id="app">
     <h1 :class="{'red': false , 'blue': true}">{{name}}</h1>
     <img :src="img" alt="">
+    <button @click="show">btn</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -12,6 +13,12 @@
             img: "add.png",
             title: "اسم الأول"
 
+        },
+        methods:{
+            show(){
+                alert('hello');
+
+            }
         }
     })
 </script>
