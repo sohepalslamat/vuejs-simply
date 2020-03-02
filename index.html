@@ -1,7 +1,8 @@
 <div id="app">
-    <h1 :class="{'red': false , 'blue': true}">{{name}}</h1>
-    <img :src="img" alt="">
-    <button @click="show">btn</button>
+    <h1 v-if="islogin">تسجيل الدخول</h1>
+    <h1 v-else-if="!islogin">الصفحة الرئيسية</h1>
+    
+    <button @click="islogin= !islogin;">btn </button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -9,24 +10,14 @@
     var app = new Vue({
         el: "#app",
         data: {
-            name: "sohep",
-            img: "add.png",
-            title: "اسم الأول"
-
+            islogin : false
+            
         },
         methods:{
-            show(){
-                alert('hello');
-
-            }
+            
         }
     })
 </script>
 <style>
-    .red{
-        color: red;
-    }
-    .blue{
-        color: blue;
-    }
+    
 </style>
