@@ -1,8 +1,11 @@
 <div id="app">
-    <h1 v-if="islogin">تسجيل الدخول</h1>
-    <h1 v-else-if="!islogin">الصفحة الرئيسية</h1>
+    <div :class="{'ara': lang == 'ar' , 'eng': lang == 'en'}">
+        <h1 v-if="lang == 'en'">hello world</h1>
+        <h1 v-else-if= " lang== 'ar'">مرحباً بالعالم</h1>
+    </div>
     
-    <button @click="islogin= !islogin;">btn </button>
+    <button @click="changed">{{lang == 'en' ? 'العربية' : "English"}}</button>
+    
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -10,14 +13,31 @@
     var app = new Vue({
         el: "#app",
         data: {
-            islogin : false
+            lang : 'en'
             
         },
         methods:{
+            changed(){
+                if (this.lang == 'en') {
+                    this.lang = 'ar'
+                }
+                else {
+                    this.lang = 'en'
+                }
+            }
             
         }
     })
 </script>
 <style>
+    .ara{
+        text-align: right;
+        direction: rtl;
+    }
+    .eng{
+        text-align: left;
+        direction: ltr;
+
+    }
     
 </style>
