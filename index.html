@@ -1,11 +1,7 @@
 <div id="app">
-    <div :class="{'ara': lang == 'ar' , 'eng': lang == 'en'}">
-        <h1 v-if="lang == 'en'">hello world</h1>
-        <h1 v-else-if= " lang== 'ar'">مرحباً بالعالم</h1>
-    </div>
-    
-    <button @click="changed">{{lang == 'en' ? 'العربية' : "English"}}</button>
-    
+    <ul>
+        <li v-for="x in names" :key="x.id">{{x.id}} - {{x.name}} </li>
+    </ul>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -13,31 +9,16 @@
     var app = new Vue({
         el: "#app",
         data: {
-            lang : 'en'
-            
-        },
-        methods:{
-            changed(){
-                if (this.lang == 'en') {
-                    this.lang = 'ar'
-                }
-                else {
-                    this.lang = 'en'
-                }
-            }
+            names : [
+                {'id': 1 , 'name': "أحمد"},
+                {'id': 2 , 'name': "يوسف"},
+                {'id': 3 , 'name': "محمد"},
+                {'id': 4 , 'name': "حسن"}
+            ]
             
         }
     })
 </script>
 <style>
-    .ara{
-        text-align: right;
-        direction: rtl;
-    }
-    .eng{
-        text-align: left;
-        direction: ltr;
-
-    }
     
 </style>
