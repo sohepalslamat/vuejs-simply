@@ -1,6 +1,6 @@
 <div id="app">
-    <h1>{{full_name}}</h1>
-    
+        <button @click="change()">{{status}}</button>
+        <h2>{{likes}}</h2>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -8,24 +8,28 @@
     var app = new Vue({
         el: "#app",
         data: {
-            first_name: "sohep",
-            last_name: "alslamat"
+            status: "dislike",
+            likes: 0           
            
         },
-        computed:{
-            full_name : {
-                get: function (){
-                    return this.first_name + ' ' + this.last_name
-                },
-                set: function (newval){
-                    this.first_name = newval.split(' ')[0]
-                    this.last_name = newval.split(' ')[1]
-                    
-                } 
-                
+        methods:{
+            change(){
+                if(this.status == 'like') {
+                    this.status = "dislike"
+                }
+                else { this.status = "like"}
             }
-            
+        },
+        watch:{
+            status(val){
+                if(val == 'like'){
+                    this.likes = this.likes + 1
+                }
+            }
         }
+        
+                  
+        
     })
 </script>
 <style>
