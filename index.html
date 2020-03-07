@@ -1,6 +1,7 @@
 <div id="app">
-        <button @click="change()">{{status}}</button>
+        <button @click="change()">{{pagdata.status}}</button>
         <h2>{{likes}}</h2>
+        <h2>القيمة السابقة : {{old}}</h2>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -8,24 +9,28 @@
     var app = new Vue({
         el: "#app",
         data: {
-            status: "dislike",
-            likes: 0           
+            pagdata:{
+                status: "dislike"
+            },
+            likes: 0,
+            old: 0           
            
         },
         methods:{
             change(){
-                if(this.status == 'like') {
-                    this.status = "dislike"
+                if(this.pagdata.status == 'like') {
+                    this.pagdata.status = "dislike"
                 }
-                else { this.status = "like"}
+                else { this.pagdata.status = "like"}
             }
         },
         watch:{
-            status(val){
-                if(val == 'like'){
+            pagdata: {handler: function(val, oldval){
+                if(val.status == 'like'){
                     this.likes = this.likes + 1
                 }
-            }
+                this.old = oldval.status;
+            },deep: true}
         }
         
                   
