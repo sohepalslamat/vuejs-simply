@@ -1,7 +1,9 @@
 <div id="app">
-        <button @click="change()">{{pagdata.status}}</button>
-        <h2>{{likes}}</h2>
-        <h2>القيمة السابقة : {{old}}</h2>
+    <input v-model="text" type="text" ></input>
+    <h2>{{text}}</h2>
+    <input v-model="text2" type="checkbox" >checkbox</input>
+    <h2>{{text2}}</h2>
+       
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -9,31 +11,10 @@
     var app = new Vue({
         el: "#app",
         data: {
-            pagdata:{
-                status: "dislike"
-            },
-            likes: 0,
-            old: 0           
+            text: '',
+            text2: true                 
            
         },
-        methods:{
-            change(){
-                if(this.pagdata.status == 'like') {
-                    this.pagdata.status = "dislike"
-                }
-                else { this.pagdata.status = "like"}
-            }
-        },
-        watch:{
-            pagdata: {handler: function(val, oldval){
-                if(val.status == 'like'){
-                    this.likes = this.likes + 1
-                }
-                this.old = oldval.status;
-            },deep: true}
-        }
-        
-                  
         
     })
 </script>
