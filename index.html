@@ -1,8 +1,15 @@
 <div id="app">
-    <input v-model="text" type="text" ></input>
+    <input v-model.lazy="text" type="text" ></input>
     <h2>{{text}}</h2>
     <input v-model="text2" type="checkbox" >checkbox</input>
     <h2>{{text2}}</h2>
+    <label for="car">اختر نوع السيارة:</label>
+    <select v-model="car" id="car">
+        <option value="فورد">فورد</option>
+        <option value="كيا">كيا</option>
+        <option value="مرسيدس">مرسيدس</option>
+    </select>
+    <h2>نوع السيارة هو {{car}}</h2>
        
 </div>
 
@@ -12,7 +19,8 @@
         el: "#app",
         data: {
             text: '',
-            text2: true                 
+            text2: true,
+            car: ''                 
            
         },
         
