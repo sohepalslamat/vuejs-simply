@@ -1,16 +1,19 @@
 <div id="app">
-    <input v-model.lazy="text" type="text" ></input>
-    <h2>{{text}}</h2>
-    <input v-model="text2" type="checkbox" >checkbox</input>
-    <h2>{{text2}}</h2>
-    <label for="car">اختر نوع السيارة:</label>
-    <select v-model="car" id="car">
-        <option value="فورد">فورد</option>
-        <option value="كيا">كيا</option>
-        <option value="مرسيدس">مرسيدس</option>
-    </select>
-    <h2>نوع السيارة هو {{car}}</h2>
-       
+    <div class="counter" >
+        <h2>{{counter}}</h2>
+        <button @click="started">ابدأ</button>
+        <button @click=" show = true">ايقاف</button>
+        <h2 v-show="show" >{{showWiner}}</h2>
+    </div>
+    <div class="list">
+        <ul>
+            <li>الرقم | الاسم</li>
+            <li v-for="val in data" :key="val.n">{{val.n}} | {{val.name}}</li>
+            <input type="text" v-model="newVal" @keyup.enter="addVal">
+        </ul>
+    </div>
+    
+    
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -18,14 +21,50 @@
     var app = new Vue({
         el: "#app",
         data: {
-            text: '',
-            text2: true,
-            car: ''                 
-           
+            data: [
+                {n : 1, name : 'كريم'},
+                {n : 2, name: 'محمود'},
+                {n : 3, name: 'عيسى'},
+                {n : 4, name: 'فاضل'},
+                {n : 5, name: 'يوسف'}
+            ],
+            counter: 1,
+            show: false,
+            newVal: ''
+
+                       
         },
+        computed:{
+            showWiner(){
+                return "الفائز هو : " + this.data[this.counter - 1].name
+            }
+            
+        },
+        methods:{
+            started(){
+                this.show = false;
+                var id = setInterval(() => {
+                    this.counter++;
+                    this.counter == this.data.length + 1  ? this.counter = 1 : this.counter;
+                    this.show == true ? clearInterval(id) : this.show;               
+                },70)
+            },
+            addVal(){
+                this.data.push({n : this.data.length + 1 , name: this.newVal})
+                this.newVal = ''
+            }            
+        }
         
     })
 </script>
 <style>
+    .counter{
+        float: left;
+    }
+    .list{
+        float: right;
+        direction: rtl;
+
+    }
     
 </style>
