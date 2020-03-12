@@ -1,16 +1,9 @@
 <div id="app">
-    <div class="counter" >
-        <h2>{{counter}}</h2>
-        <button @click="started">ابدأ</button>
-        <button @click=" show = true">ايقاف</button>
-        <h2 v-show="show" >{{showWiner}}</h2>
-    </div>
-    <div class="list">
+    <div  >
         <ul>
-            <li>الرقم | الاسم</li>
-            <li v-for="val in data" :key="val.n">{{val.n}} | {{val.name}}</li>
-            <input type="text" v-model="newVal" @keyup.enter="addVal">
+            <li v-for=" (val,i) in list " :key="i">{{val}}</li>
         </ul>
+        <input type="text" v-model="newVal" @keyup.enter="added" >
     </div>
     
     
@@ -21,50 +14,25 @@
     var app = new Vue({
         el: "#app",
         data: {
-            data: [
-                {n : 1, name : 'كريم'},
-                {n : 2, name: 'محمود'},
-                {n : 3, name: 'عيسى'},
-                {n : 4, name: 'فاضل'},
-                {n : 5, name: 'يوسف'}
-            ],
-            counter: 1,
-            show: false,
-            newVal: ''
-
-                       
-        },
-        computed:{
-            showWiner(){
-                return "الفائز هو : " + this.data[this.counter - 1].name
-            }
+           list:[
+               'a',
+               'b'
+           ],
+           newVal: ''
+           
             
         },
         methods:{
-            started(){
-                this.show = false;
-                var id = setInterval(() => {
-                    this.counter++;
-                    this.counter == this.data.length + 1  ? this.counter = 1 : this.counter;
-                    this.show == true ? clearInterval(id) : this.show;               
-                },70)
-            },
-            addVal(){
-                this.data.push({n : this.data.length + 1 , name: this.newVal})
+            added(){
+                this.list.push(this.newVal)
                 this.newVal = ''
-            }            
+            }
+            
+                        
         }
         
     })
 </script>
 <style>
-    .counter{
-        float: left;
-    }
-    .list{
-        float: right;
-        direction: rtl;
-
-    }
-    
+   
 </style>
