@@ -1,12 +1,7 @@
 <div id="app">
-    <card></card>    
-    <div>
-        <h1>المساء الجميل</h1>
-        <img src="2.jpg" width="200" height="150">
-        <p>ساعات المساء الجميلة كيف نقضبيها</p>
-    </div>
-          
-
+    <card title="الذهاب للمريخ" img="1.jpg" text="المريخ هو الكوكب الأقرب إلى قلب الإنسان"></card>  
+    <card title="المساء الجميل" img="2.jpg" text="ساعات المساء الجميلة كيف نقضبيها"></card>  
+        
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -21,16 +16,18 @@
             'card': {
                 data(){
                     return{
-                        title: 'الذهاب للمريخ'
+                       
                     }
                 },
+                props: ['title', 'img', 'text'],
                 template: ` <div>
                             <h1>{{title}}</h1>
-                            <img src="1.jpg" width="200" height="150">
-                            <p>المريخ هو الكوكب الأقرب إلى قلب الإنسان</p>
+                            <img :src="img" width="200" height="150">
+                            <p>{{text}}</p>
                             </div>
                           `
-            }
+                },
+               
 
         },
         methods:{
