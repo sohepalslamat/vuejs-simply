@@ -1,16 +1,11 @@
 <div id="app">
-    <div>
-        <h1>الذهاب للمريخ</h1>
-        <img src="1.jpg" width="200" height="150">
-        <p>المريخ هو الكوكب الأقرب إلى قلب الإنسان</p>
-    </div>
+    <card></card>    
     <div>
         <h1>المساء الجميل</h1>
         <img src="2.jpg" width="200" height="150">
         <p>ساعات المساء الجميلة كيف نقضبيها</p>
     </div>
-
-    <card />
+          
 
 </div>
 
@@ -19,8 +14,24 @@
     var app = new Vue({
         el: "#app",
         data: {
-           
+                      
             
+        },
+        components:{
+            'card': {
+                data(){
+                    return{
+                        title: 'الذهاب للمريخ'
+                    }
+                },
+                template: ` <div>
+                            <h1>{{title}}</h1>
+                            <img src="1.jpg" width="200" height="150">
+                            <p>المريخ هو الكوكب الأقرب إلى قلب الإنسان</p>
+                            </div>
+                          `
+            }
+
         },
         methods:{
                 
