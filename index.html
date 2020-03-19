@@ -1,6 +1,7 @@
 <div id="app">
-    <card  img="1.jpg" :likes="6" text="المريخ هو الكوكب الأقرب إلى قلب الإنسان"></card>  
-    <card title="المساء الجميل"  :likes="4" img="2.jpg" text="ساعات المساء الجميلة كيف نقضبيها"></card>  
+    <card title="الذهاب للمريخ" img="1.jpg" text="المريخ هو الكوكب الأقرب إلى قلب الإنسان"></card>  
+    <card title="المساء الجميل" img="2.jpg" text="ساعات المساء الجميلة كيف نقضبيها"></card> 
+    <h1>عدد اللايكات الكلي : {{likes}}</h1> 
         
 </div>
 
@@ -9,38 +10,36 @@
     var app = new Vue({
         el: "#app",
         data: {
-                      
-            
+            likes: 0            
         },
         components:{
             'card': {
                 data(){
                     return{
-                       
+                        likes:0                        
                     }
                 },
                 props: {
                     'title': {type: String, default: 'قيمة افتراضية' },
                     'img':{type:String, required: true},
-                    'text': {type:String},
-                    likes : {type:Number, validator: function(val){
-                        return val<= 5
-                    }}
+                    'text': {type:String}
                     },
                 template: ` <div>
                             <h1>{{title}}</h1>
                             <img :src="img" width="200" height="150">
                             <p>{{text}}</p>
-                            <h4>{{likes}}</h4>
+                            <button @click="addLike">أعجبني</button>
+                            <span>{{likes}}</span>
+                            
                             </div>
-                          `
+                          `,
+                methods:{
+                    addLike(){
+                        this.likes++;
+                    }
+                }
                 },
-               
-
         },
-        methods:{
-                
-        }
         
     })
 </script>
