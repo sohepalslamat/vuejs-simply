@@ -1,6 +1,6 @@
 <div id="app">
-    <card title="الذهاب للمريخ" img="1.jpg" text="المريخ هو الكوكب الأقرب إلى قلب الإنسان"></card>  
-    <card title="المساء الجميل" img="2.jpg" text="ساعات المساء الجميلة كيف نقضبيها"></card> 
+    <card @send="likes++" title="الذهاب للمريخ" img="1.jpg" text="المريخ هو الكوكب الأقرب إلى قلب الإنسان"></card>  
+    <card @send="likes++" title="المساء الجميل" img="2.jpg" text="ساعات المساء الجميلة كيف نقضبيها"></card> 
     <h1>عدد اللايكات الكلي : {{likes}}</h1> 
         
 </div>
@@ -36,6 +36,7 @@
                 methods:{
                     addLike(){
                         this.likes++;
+                        this.$emit('send')
                     }
                 }
                 },
