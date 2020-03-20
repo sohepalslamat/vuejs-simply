@@ -1,7 +1,18 @@
 <div id="app">
-    <card @send="likes++" title="الذهاب للمريخ" img="1.jpg" text="المريخ هو الكوكب الأقرب إلى قلب الإنسان"></card>  
-    <card @send="likes++" title="المساء الجميل" img="2.jpg" text="ساعات المساء الجميلة كيف نقضبيها"></card> 
-    <h1>عدد اللايكات الكلي : {{likes}}</h1> 
+    <div class="components">
+        <h1>components</h1>
+        <hr>
+        <card :like.sync="likes1" title="الذهاب للمريخ" img="1.jpg" text="المريخ هو الكوكب الأقرب إلى قلب الإنسان"></card>  
+        <card :like.sync="likes2" title="المساء الجميل" img="2.jpg" text="ساعات المساء الجميلة كيف نقضبيها"></card>
+    </div>
+    <div class="root">
+        <h1>root</h1>
+        <hr>
+        <h3>عدد اللايكات الكلي : {{likes1+likes2}}</h3>
+        <button @click='likes1++ ; likes2++ ' >اعجبني للكل</button>
+    </div>
+     
+     
         
 </div>
 
@@ -10,7 +21,8 @@
     var app = new Vue({
         el: "#app",
         data: {
-            likes: 0            
+            likes1: 0,
+            likes2: 0            
         },
         components:{
             'card': {
@@ -22,7 +34,8 @@
                 props: {
                     'title': {type: String, default: 'قيمة افتراضية' },
                     'img':{type:String, required: true},
-                    'text': {type:String}
+                    'text': {type:String},
+                    like: {type:Number}
                     },
                 template: ` <div>
                             <h1>{{title}}</h1>
@@ -36,7 +49,12 @@
                 methods:{
                     addLike(){
                         this.likes++;
-                        this.$emit('send')
+                        this.$emit('update:like',this.likes)
+                    }
+                },
+                watch:{
+                    like(val){
+                       this.likes = val 
                     }
                 }
                 },
@@ -45,5 +63,15 @@
     })
 </script>
 <style>
+    .components{
+        margin: 20px;
+        padding: 10px;
+        float: left;
+    }
+    .root{
+        margin: 20px;
+        padding: 10px;
+        float: right;
+    }
    
 </style>
