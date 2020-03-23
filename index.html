@@ -1,7 +1,14 @@
 <div id="app">
-   <card img="1.jpg" text="المريخ هو الكوكب الأقرب إلى قلب الإنسان">الذهاب للمريخ</card>  
-   <card img="2.jpg" text="ساعات المساء الجميلة كيف نقضبيها">المساء الجميل</card>
-   <card img="2.jpg" text="ساعات المساء الجميلة كيف نقضبيها"></card>
+    <div class="center">
+        <button @click="comp='lastname'">التالي</button>
+        <button @click="comp='firstname'">السابق</button>
+        <keep-alive>
+            <component :is='comp'></component>
+        </keep-alive>
+        
+
+    </div>
+    
    
 </div>
 
@@ -10,23 +17,21 @@
     var app = new Vue({
         el: "#app",
         data: {
-                                  
+            comp : 'firstname'
         },
         components:{
-            'card': {
-                data(){
-                    return{
-                                             
-                    }
-                },
-                props: {
-                    'img':{type:String, required: true},
-                    'text': {type:String}
-                    },
+            'firstname': {
                 template: ` <div>
-                            <h1><slot>قيمة افتراضية</slot></h1>
-                            <img :src="img" width="200" height="150">
-                            <p>{{text}}</p>
+                            <h1>ادخل الاسم الأول</h1>
+                            <input type="text" placeholder="ادخل الاسم الأول">
+                            </div>
+                          `,
+                
+                },
+            'lastname': {
+                template: ` <div>
+                            <h1>ادخل الاسم الثاني</h1>
+                            <input type="text" placeholder="ادخل الاسم الثاني">
                             </div>
                           `,
                 
@@ -36,5 +41,10 @@
     })
 </script>
 <style>
+    .center{
+        padding: 40px;
+        width: 800px;
+        margin: 20px auto;
+    }
     
 </style>
