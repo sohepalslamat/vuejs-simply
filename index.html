@@ -1,19 +1,8 @@
 <div id="app">
-    <div class="components">
-        <h1>components</h1>
-        <hr>
-        <card :like.sync="likes1" title="الذهاب للمريخ" img="1.jpg" text="المريخ هو الكوكب الأقرب إلى قلب الإنسان"></card>  
-        <card :like.sync="likes2" title="المساء الجميل" img="2.jpg" text="ساعات المساء الجميلة كيف نقضبيها"></card>
-    </div>
-    <div class="root">
-        <h1>root</h1>
-        <hr>
-        <h3>عدد اللايكات الكلي : {{likes1+likes2}}</h3>
-        <button @click='likes1++ ; likes2++ ' >اعجبني للكل</button>
-    </div>
-     
-     
-        
+   <card img="1.jpg" text="المريخ هو الكوكب الأقرب إلى قلب الإنسان">الذهاب للمريخ</card>  
+   <card img="2.jpg" text="ساعات المساء الجميلة كيف نقضبيها">المساء الجميل</card>
+   <card img="2.jpg" text="ساعات المساء الجميلة كيف نقضبيها"></card>
+   
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -21,57 +10,31 @@
     var app = new Vue({
         el: "#app",
         data: {
-            likes1: 0,
-            likes2: 0            
+                                  
         },
         components:{
             'card': {
                 data(){
                     return{
-                        likes:0                        
+                                             
                     }
                 },
                 props: {
-                    'title': {type: String, default: 'قيمة افتراضية' },
                     'img':{type:String, required: true},
-                    'text': {type:String},
-                    like: {type:Number}
+                    'text': {type:String}
                     },
                 template: ` <div>
-                            <h1>{{title}}</h1>
+                            <h1><slot>قيمة افتراضية</slot></h1>
                             <img :src="img" width="200" height="150">
                             <p>{{text}}</p>
-                            <button @click="addLike">أعجبني</button>
-                            <span>{{likes}}</span>
-                            
                             </div>
                           `,
-                methods:{
-                    addLike(){
-                        this.likes++;
-                        this.$emit('update:like',this.likes)
-                    }
-                },
-                watch:{
-                    like(val){
-                       this.likes = val 
-                    }
-                }
+                
                 },
         },
         
     })
 </script>
 <style>
-    .components{
-        margin: 20px;
-        padding: 10px;
-        float: left;
-    }
-    .root{
-        margin: 20px;
-        padding: 10px;
-        float: right;
-    }
-   
+    
 </style>
