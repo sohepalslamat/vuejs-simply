@@ -1,15 +1,5 @@
 <div id="app">
-    <div class="center">
-        <button @click="comp='lastname'">التالي</button>
-        <button @click="comp='firstname'">السابق</button>
-        <keep-alive>
-            <component :is='comp'></component>
-        </keep-alive>
-        
-
-    </div>
-    
-   
+    <h1 ref="title">{{name}}</h1>   
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -17,34 +7,20 @@
     var app = new Vue({
         el: "#app",
         data: {
-            comp : 'firstname'
+            name: 'تعلم ببساطة'            
         },
-        components:{
-            'firstname': {
-                template: ` <div>
-                            <h1>ادخل الاسم الأول</h1>
-                            <input type="text" placeholder="ادخل الاسم الأول">
-                            </div>
-                          `,
-                
-                },
-            'lastname': {
-                template: ` <div>
-                            <h1>ادخل الاسم الثاني</h1>
-                            <input type="text" placeholder="ادخل الاسم الثاني">
-                            </div>
-                          `,
-                
-                },
+        created(){
+            console.log(this.name)
+            console.log(this.$refs['title'])
         },
+        mounted(){
+            console.log(this.name)
+            console.log(this.$refs['title'])
+        }
+        
         
     })
 </script>
 <style>
-    .center{
-        padding: 40px;
-        width: 800px;
-        margin: 20px auto;
-    }
-    
+        
 </style>
