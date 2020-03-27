@@ -1,5 +1,8 @@
 <div id="app">
-    <h1 ref="title">{{name}}</h1>   
+    <h1 ref="title">{{name}}</h1>
+    <button @click='name="أهلا بكم"'>btn</button>
+    <card v-if="show"></card>
+    <button @click="show=false">تدمير الكمبوننت</button>   
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -7,7 +10,8 @@
     var app = new Vue({
         el: "#app",
         data: {
-            name: 'تعلم ببساطة'            
+            name: 'تعلم ببساطة',
+            show: true
         },
         created(){
             console.log(this.name)
@@ -16,7 +20,18 @@
         mounted(){
             console.log(this.name)
             console.log(this.$refs['title'])
-        }
+        },
+        updated(){
+            console.log("تم تحديث الداتا")
+        },
+        
+        components:{
+            card :{
+            template: "<div><h1>أنا كمبوننت</h1> <h2>go</h2></div>",
+            beforeDestroy(){
+            console.log('الأن سيتم تدمير الكائن')
+        },
+        }}
         
         
     })
