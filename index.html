@@ -1,99 +1,33 @@
 <div id="app">
-    <tools-bar :cust_element="element" :el_props.sync="new_props"></tools-bar>
-    <p @click='selected' v-for="i in 5" :key="i">تعلم ببساطة {{i}}</p>
-     
+    <p>{{num | add(2) | toStr}}</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script type="text/x-template" id="toolsbar" >
-    <div class='bar'>
-        <select v-model='prop_element.color' name="colors">
-            <option value="">لون الخط</option>
-            <option v-for="(color, i) in colors" :key='i' :value="color">{{color}}</option>
-        </select>
-        <select v-model='prop_element.size' name="sizes">
-            <option value="">حجم الخط</option>
-            <option v-for="(size, i) in sizes" :key='i' :value="size">{{size}}</option>
-        </select>
-        <label >عريض <input v-model='prop_element.bold' type="checkbox"></label>
-        <select v-model='prop_element.back_color' name="back_colors">
-            <option value="">لون الخلفية</option>
-            <option v-for="(color, i) in back_colors" :key='i' :value="color">{{color}}</option>
-        </select>
-
-    </div>
-</script>
 <script>
     var app = new Vue({
         el: "#app",
         data: {
-            element: {},
-            new_props: {}
-            
+            num: 1                         
         },
-        methods:{
-            selected(e){
-                this.element = e.target
+        filters:{
+            add(val, x){
+                return val+x 
+            },
+            toStr(val){
+                if(val == 0) return 'صفر'
+                else if(val == 1) return 'واحد'
+                else if(val == 2) return 'اثنان'
+                else if(val == 3) return 'ثلاث'
+                else return val
             }
-
-        },
-        watch:{
-            new_props:{handler:function(val){
-                this.element.style.color = val.color
-                this.element.style.fontSize = val.size
-                this.element.style.fontWeight = val.bold== true ? 'bold' : ''
-                this.element.style.backgroundColor = val.back_color
-            },deep:true}
-        },
-        
-        components:{
-            toolsBar: {
-                template: '#toolsbar',
-                props:["cust_element",'el_props'],
-                updated(){
-                    this.$emit('update:el_props',this.prop_element)
-                },
-                data(){
-                    return{
-                        colors: ['red', 'blue', 'black','green'],
-                        sizes: ['10px', '20px', '25px', '30px', '40px'],
-                        back_colors: ['red', 'blue', 'black','green','white'],
-                        prop_element : {
-                            color: '',
-                            size: '',
-                            bold: false,
-                            back_color: ''
-                        }
-                    }
-                },
-                watch:{
-                    cust_element(val){
-                       this.prop_element.color = val.style.color
-                       this.prop_element.size = val.style.fontSize
-                       this.prop_element.bold = val.style.fontWeight=='bold' ? true :false
-                       this.prop_element.back_color = val.style.backgroundColor
-                    }
-                }
-            } 
-                        
         }
-        
-        
     })
 </script>
 <style>
     #app{
-        direction: rtl;
         margin: 20px;
     }
-    .bar{
-        border: black 1px solid;
-        background-color: burlywood;
-        padding: 4px;
-    }
-    .bar *{
-        margin: 2px;
-    }
+    
     
         
 </style>
