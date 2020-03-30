@@ -1,26 +1,23 @@
 <div id="app">
-    <p>{{num | add(2) | toStr}}</p>
+    <p>{{hello()}}</p>    
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
+    var mymixin = {
+        methods:{
+            hello(){
+                return 'hello world'
+            }
+        },
+        
+    }
     var app = new Vue({
         el: "#app",
+        mixins: [mymixin],
         data: {
-            num: 1                         
+                                   
         },
-        filters:{
-            add(val, x){
-                return val+x 
-            },
-            toStr(val){
-                if(val == 0) return 'صفر'
-                else if(val == 1) return 'واحد'
-                else if(val == 2) return 'اثنان'
-                else if(val == 3) return 'ثلاث'
-                else return val
-            }
-        }
     })
 </script>
 <style>
