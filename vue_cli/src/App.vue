@@ -1,25 +1,24 @@
 <template>
   <div id="app">
-    <HelloWorld />
-    <List />
+    <ul>
+      <li><router-link to="/">الصفحة الرئيسية</router-link> </li>
+      <li><router-link to="/news">الأخبار</router-link></li>
+      <li><router-link to="/money">الاقتصاد</router-link></li>
+    </ul>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import List from './components/List.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    List
+    
   }
 }
 </script>
 
 <style>
-#app {
- 
-}
+
 </style>
