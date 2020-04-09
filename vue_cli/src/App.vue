@@ -21,6 +21,7 @@ export default {
 
 <style>
 .left{
+  height: 400px;
   float: left;
   margin: 20px;
   margin-right: 50px;
@@ -28,8 +29,8 @@ export default {
   border: 1px solid gray;
 }
 .right{
-  float:inline-end;
   padding: 20px;
+  display: inline-block;
   
 }
 </style>
