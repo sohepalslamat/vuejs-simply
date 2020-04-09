@@ -1,5 +1,5 @@
 # Vue Router 
-# Nested Routes
+# Params Routes
 
 بعد أن تنسخ المستودع إلى حاسبك بشكل محلي تقوم بالتالي:
 
