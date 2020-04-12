@@ -1,5 +1,5 @@
 # Vue Router 
-# Params Routes
+# Query Routes
 
 بعد أن تنسخ المستودع إلى حاسبك بشكل محلي تقوم بالتالي:
 

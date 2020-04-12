@@ -3,7 +3,7 @@
     <ul class="left">
       <li><router-link :to="{name: 'homepage'}">الصفحة الرئيسية</router-link> </li>
       <li><router-link :to="{ name: 'news'}">الأخبار</router-link></li>
-      <li><router-link :to="{name: 'money'}">الاقتصاد</router-link></li>
+      <li><router-link :to="{name: 'money', query: {username: 'admin', lastname: 'last'}}">الاقتصاد</router-link></li>
     </ul>
     <router-view class="right"></router-view>
   </div>
