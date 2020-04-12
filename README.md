@@ -1,5 +1,5 @@
 # Vue Router 
-# Query Routes
+# Push Routes
 
 بعد أن تنسخ المستودع إلى حاسبك بشكل محلي تقوم بالتالي:
 
