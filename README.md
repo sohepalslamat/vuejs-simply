@@ -1,6 +1,6 @@
 # Vue Router 
 # Navigation Guards
-# beforeEnter
+# beforeRouteEnter, beforeRouteUpdate, beforeRouteLeave 
 
 بعد أن تنسخ المستودع إلى حاسبك بشكل محلي تقوم بالتالي:
 
