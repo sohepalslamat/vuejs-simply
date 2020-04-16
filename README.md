@@ -1,5 +1,6 @@
 # Vue Router 
-# Push Routes
+# Navigation Guards
+# beforeEach
 
 بعد أن تنسخ المستودع إلى حاسبك بشكل محلي تقوم بالتالي:
 
