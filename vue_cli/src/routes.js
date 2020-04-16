@@ -9,14 +9,6 @@ const routes =
 [
   { path: '/', component: main, name: "homepage"  },
   { path: '/news', component: news , name: 'news',
-  beforeEnter: (to, from, next) => {
-    console.log(from.path)
-    if(from.path == '/'){
-      next({name:"money"})
-    }
-    else { next()}
-    
-  },
   children: [
     { path: 'seasa', component: seasa, name: "seasa"  },
     { path: 'world', component: world, name: "world", children:[
