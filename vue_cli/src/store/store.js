@@ -23,6 +23,14 @@ const store = new Vuex.Store({
         set_isLogin(state, val){
             state.isLogin = val
         }
+    },
+    actions:{
+        logout({commit}){
+            setTimeout(() => {
+                commit('set_isLogin', false)                
+              }, 1000)
+            
+        }
     }    
 
 })

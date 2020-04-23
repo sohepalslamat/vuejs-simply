@@ -5,7 +5,6 @@
     <p> نص المثال رقم {{$route.params.id}}</p>
     <button @click="logout()"> logout </button>
     <p>{{isLogin}}</p>
-    <p v-for="item in todosdone" :key="item.id">{{item.name}}</p>
 </div>
 </template>
 
@@ -23,7 +22,7 @@ export default {
     },
     methods:{
         logout(){
-            this.$store.commit('set_isLogin', false)
+            this.$store.dispatch('logout')
         }
     }
 
