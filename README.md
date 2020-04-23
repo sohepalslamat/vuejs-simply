@@ -1,6 +1,5 @@
-# Vue Router 
-# Navigation Guards
-# beforeRouteEnter, beforeRouteUpdate, beforeRouteLeave 
+# Vuex 
+# state
 
 بعد أن تنسخ المستودع إلى حاسبك بشكل محلي تقوم بالتالي:
 
