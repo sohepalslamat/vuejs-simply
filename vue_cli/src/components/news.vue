@@ -10,14 +10,7 @@
 
 <script>
 export default {
-  beforeRouteEnter (to, from, next) {
-    console.log(from.path)
-    if(from.path == '/'){
-      next({name:"money"})
-    }
-    else { next()}
-  }
-
+  
 }
 </script>
 
