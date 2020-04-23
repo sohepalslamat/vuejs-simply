@@ -18,6 +18,11 @@ const store = new Vuex.Store({
         todosdone(state){
             return state.todos.filter(todo => todo.done)
         }
+    },
+    mutations:{
+        set_isLogin(state, val){
+            state.isLogin = val
+        }
     }    
 
 })
