@@ -1,30 +1,31 @@
 <div id="app">
-    <p>{{hello()}}</p>    
+        
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
-    var mymixin = {
-        methods:{
-            hello(){
-                return 'hello world'
-            }
-        },
-        
-    }
-    var app = new Vue({
-        el: "#app",
-        mixins: [mymixin],
-        data: {
-                                   
-        },
-    })
+var str = '{"name":"sohep", "age": 30, "Gender": ["male", "female"], "children": {"name": "omar", "age": 5}, "married": true }'
+var obj = JSON.parse(str);
+console.log(obj.Gender[0])
+console.log(obj.children.name)
+
+
+var str1 = JSON.stringify(obj)
+console.log(typeof(str1))
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 <style>
-    #app{
-        margin: 20px;
-    }
-    
-    
-        
+       
 </style>
