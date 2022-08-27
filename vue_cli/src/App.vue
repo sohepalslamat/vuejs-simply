@@ -1,25 +1,34 @@
 <template>
-  <div id="app">
-    <HelloWorld />
-    <List />
+  <div class="app">
+    <h3>My root</h3>
+    <SInput v-model="x" />
+    <p>{{x}}</p>
+    <button @click="x='Hi'">say Hi</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import List from './components/List.vue'
+import SInput from './components/SInput.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    List
+    SInput
+  },
+  data(){
+    return{
+      x: 'hi'
+    }
   }
 }
 </script>
 
 <style>
-#app {
- 
+.app {
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+   border: 1px solid rgb(0, 255, 106);
+     
 }
 </style>
