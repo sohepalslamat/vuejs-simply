@@ -1,7 +1,7 @@
 <template>
   <main class="app">
     <h3>My root</h3>
-    <SInput v-model:value="x" v-model:first_name="s" />
+    <SInput v-model="x" v-model:first_name="s" />
     <p>{{x}}</p>
     <button @click="x='Hi'">say Hi</button>
     ------------

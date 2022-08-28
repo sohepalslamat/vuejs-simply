@@ -11,15 +11,15 @@
 <script>
 export default {
   name: "SInput",
-  props: ['value', 'first_name'],
-  emits: ['update:value', 'update:first_name'],
+  props: ['modelValue', 'first_name'],
+  emits: ['update:modelValue', 'update:first_name'],
   computed :{
     v: {
       get() {
-        return this.value
+        return this.modelValue
       },
       set(val) {
-        this.$emit('update:value', val)
+        this.$emit('update:modelValue', val)
       }
     },
     name: {
