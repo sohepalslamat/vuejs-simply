@@ -11,7 +11,7 @@
 <script>
 export default {
   name: "SInput",
-  props: ['modelValue', 'first_name'],
+  props: ['modelValue', 'first_name', 'modelModifiers',  'first_nameModifiers'],
   emits: ['update:modelValue', 'update:first_name'],
   computed :{
     v: {
@@ -19,7 +19,8 @@ export default {
         return this.modelValue
       },
       set(val) {
-        this.$emit('update:modelValue', val)
+        // this.$emit('update:modelValue', val)
+        this.emitvalue(val)
       }
     },
     name: {
@@ -27,8 +28,25 @@ export default {
         return this.first_name
       },
       set(val) {
-        this.$emit('update:first_name', val)
+        // this.$emit('update:first_name', val)
+        this.emitFirst_name(val)
       }
+    }
+  },
+  methods: {
+    emitvalue(val){
+      let value = val
+      if(this.modelModifiers.capitalize){
+        value = value.charAt(0).toUpperCase() + value.slice(1)
+      }
+      this.$emit('update:modelValue', value)
+    },
+    emitFirst_name(val){
+      let value = val
+      if(this.first_nameModifiers.capitalize){
+        value = value.charAt(0).toUpperCase() + value.slice(1)
+      }
+      this.$emit('update:first_name', value)
     }
   }
   
