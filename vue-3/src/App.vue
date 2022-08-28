@@ -1,9 +1,12 @@
 <template>
   <main class="app">
     <h3>My root</h3>
-    <SInput v-model="x" />
+    <SInput v-model:value="x" v-model:first_name="s" />
     <p>{{x}}</p>
     <button @click="x='Hi'">say Hi</button>
+    ------------
+    <p>{{s}}</p>
+    <button @click="s='jon'">set Jon</button>
   </main>
 </template>
 
@@ -15,7 +18,8 @@ export default {
   },
   data(){
     return{
-      x: 'hi'
+      x: 'hi',
+      s: 'Ahmed'
     }
   }
 };
